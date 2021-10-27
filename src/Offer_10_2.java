@@ -6,6 +6,24 @@
  */
 public class Offer_10_2 {
     public int numWays(int n) {
+        if (n == 0)
+            return 1;
+        if (n < 3){
+            return n;
+        }
+        int a = 1;
+        int b = 1;
+        int sum = 2;
+        for (int i = 2; i < n; i++){
+            a = b;
+            b = sum;
+            sum = (a + b) % 1000000007;
+        }
+        return sum;
+    }
+
+
+    public int numWays(int n) {
         int a = 1, b = 1;
         int sum;
         for (int i = 0; i < n; i++){

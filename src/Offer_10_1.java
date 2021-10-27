@@ -8,6 +8,23 @@
  * 答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。
  */
 public class Offer_10_1 {
+    public int fib(int n) {
+        if (n < 2){
+            return n;
+        }
+        int i = 2;
+        int a = 0;
+        int b = 1;
+        int sum = 1;
+        while (i < n){
+            i++;
+            a = b;
+            b = sum;
+            sum = (a + b) % 1000000007;
+        }
+        return sum;
+    }
+
 //    public int fib(int n) {
 //        if (n <= 1)
 //            return n;

@@ -6,6 +6,28 @@
  * 但它不能进入方格 [35, 38]，因为3+5+3+8=19。请问该机器人能够到达多少个格子
  */
 public class Offer_13 {
+    boolean[][] mat;
+    public int movingCount(int m, int n, int k) {
+        mat = new boolean[m][n];
+        return dfs(0, 0, m, n, k);
+    }
+    private int sum(int m){
+        int sum = 0;
+        while (m != 0){
+            sum += (m % 10);
+            m = m / 10;
+        }
+        return sum;
+    }
+    private int dfs(int i, int j, int m, int n, int k){
+        if (sum(i) + sum(j) > k || i >= m || j >= n || mat[i][j]){
+            return 0;
+        }
+        mat[i][j] = true;
+        return 1 + dfs(i + 1, j, m, n, k) + dfs(i, j + 1, m, n, k);
+    }
+
+
     private boolean[][] visited;
     public int movingCount(int m, int n, int k) {
         visited = new boolean[m][n];
@@ -17,5 +39,6 @@ public class Offer_13 {
         visited[i][j] = true;//同样
         return 1+ dfs(i+1,j,(i+1) % 10 == 0 ? iSum-8:iSum+1,jSum,m,n,k) + dfs(i,j+1,iSum,(j+1) % 10 == 0 ? jSum-8:jSum+1,m,n,k) ;
     }
+
 }
 

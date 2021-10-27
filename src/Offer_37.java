@@ -15,7 +15,68 @@ import java.util.Queue;
  * 序列化为 "[1,2,3,null,null,4,5]"
  */
 public class Offer_37 {
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        if (root == null)
+            return "[]";
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        StringBuffer res = new StringBuffer();
+        res.append("[");
+        while (!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            if (node != null){
+                res.append(node.val);
+                res.append(",");
+            }else {
+                res.append("null,");
+            }
+            if (node != null){
+                queue.offer(node.left);
+                queue.offer(node.right);
+            }
+        }
+        return res.deleteCharAt(res.lastIndexOf(",")).append("]").toString();
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        if (data.equals("[]")){
+            return null;
+        }
+        String[] splits = data.substring(1, data.length() - 1).split(",");
+        TreeNode root = new TreeNode(Integer.parseInt(splits[0]));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int i = 1;
+        while (!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            if (splits[i].equals("null")){
+                node.left = null;
+            }else {
+                node.left = new TreeNode(Integer.parseInt(splits[i]));
+            }
+            if (node.left != null){
+                queue.offer(node.left);
+            }
+            i++;
+            if (splits[i].equals("null")){
+                node.right = null;
+            }else {
+                node.right = new TreeNode(Integer.parseInt(splits[i]));
+            }
+            i++;
+            if (node.right != null){
+                queue.offer(node.right);
+            }
+        }
+        return root;
+    }
 }
+
+
+
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

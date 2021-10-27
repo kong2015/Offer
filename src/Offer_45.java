@@ -1,25 +1,14 @@
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 /**
  * 输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个
+ * 输入: [3,30,34,5,9]
+ * 输出: "3033459"
  */
+
 public class Offer_45 {
 }
-//class Solution {
-//    public String minNumber(int[] nums) {
-//        String[] datas = new String[nums.length];
-//        for (int i = 0; i < nums.length; i++){
-//            datas[i] = String.valueOf(nums[i]);
-//        }
-//        Arrays.sort(datas, (x, y) -> (x + y).compareTo(y + x));
-//        StringBuffer res = new StringBuffer();
-//        for (String data:datas){
-//            res.append(data);
-//        }
-//        return res.toString();
-//    }
-//}
+
 class Solution {
     public String minNumber(int[] nums) {
         String[] datas = new String[nums.length];
@@ -63,5 +52,37 @@ class Solution {
         String temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+
+
+
+    public String minNumber(int[] nums) {
+        Queue<String>queue = new PriorityQueue<>(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return (o1 + o2).compareTo(o2 +o1);
+            }
+        });
+        for (int num : nums) {
+            queue.offer(num + "");
+        }
+        StringBuffer res = new StringBuffer();
+        while (!queue.isEmpty()){
+            res.append(queue.poll());
+        }
+        return res.toString();
+    }
+
+    public String minNumber(int[] nums) {
+        String[] datas = new String[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            datas[i] = String.valueOf(nums[i]);
+        }
+        Arrays.sort(datas, (x, y) -> (x + y).compareTo(y + x));
+        StringBuffer res = new StringBuffer();
+        for (String data : datas) {
+            res.append(data);
+        }
+        return res.toString();
     }
 }

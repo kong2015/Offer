@@ -4,11 +4,23 @@
 public class Offer_64 {
     public int sumNums(int n) {
         int sum = 0;
-        boolean res = n > 0 && (sum += sumNums(n - 1) + n) > 0;
-        return sum;
+        boolean b = n >= 1 && (sum += n + sumNums(n - 1)) > 0;
+        return sum; //sumNums(0)时候返回了sum= 0；
     }
-    public int sumNums(int n) {
-        boolean x = n > 1 && (n += sumNums(n - 1)) > 0;
-        return n;
-    }
+
+
+
+
+
+
+
+
+
+
+
+//    public int sumNums(int n) {
+//        int sum = 0;
+//        boolean res = n > 0 && (sum += sumNums(n - 1) + n) > 0;
+//        return sum;
+//    }
 }

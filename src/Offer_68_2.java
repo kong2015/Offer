@@ -1,10 +1,30 @@
+import javax.swing.tree.TreeNode;
+
 /**
  * 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
  */
+
 public class Offer_68_2 {
 }
+
 //重点是寻找p和q
 class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q){
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left == null){
+            return right;
+        }else if (right == null){
+            return left;
+        }else return root;
+    }
+
+
+
+
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null) return null; // 如果树为空，直接返回null
         if(root == p || root == q) return root; // 如果 p和q中有等于 root的，那么它们的最近公共祖先即为root（一个节点也可以是它自己的祖先）

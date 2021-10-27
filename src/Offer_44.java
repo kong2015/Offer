@@ -4,22 +4,34 @@
  */
 public class Offer_44 {
     public int findNthDigit(int n) {
-        if (n <= 9)
-            return n;
-        int start = 1;
         int digit = 1;
+        int start = 1;
         int count = 9;
-        int a = 0, b = 0;
-        while (true){
+        while (n > count) { // 1.
             n -= count;
+            digit += 1;
             start *= 10;
-            digit ++;
-            count = 9 * digit * start;
-            a = (n - 1) / digit;
-            b = (n - 1) % digit;
-            if (a < 9 * start){
-                return Integer.parseInt(String.valueOf(String.valueOf(start + a).charAt(b)));
-            }
+            count = digit * start * 9;
         }
+        int num = start + (n - 1) / digit; // 2.
+//        return Integer.parseInt(String.valueOf(String.valueOf(num).charAt((n - 1) % digit)));
+        return String.valueOf(num).charAt((n - 1) % digit) - '0'; // 3.
     }
+
+
+
+
+//    public int findNthDigit(int n) {
+//        int digit = 1;
+//        long start = 1;
+//        long count = 9;
+//        while (n > count) { // 1.
+//            n -= count;
+//            digit += 1;
+//            start *= 10;
+//            count = digit * start * 9;
+//        }
+//        long num = start + (n - 1) / digit; // 2.
+//        return Long.toString(num).charAt((n - 1) % digit) - '0'; // 3.
+//    }
 }

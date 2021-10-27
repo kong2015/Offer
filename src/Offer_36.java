@@ -1,10 +1,37 @@
+import org.w3c.dom.Node;
+
+
 /**
  * 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。
  * 要求不能创建任何新的节点，只能调整树中节点指针的指向
  */
 public class Offer_36 {
-}
-class Solution {
+    Node pre = null;
+    Node head = null;
+    public Node treeToDoublyList(Node root) {
+        if (root == null)
+            return null;
+        inOrder(root);
+        pre.right = head;
+        head.left = pre;
+        return head;
+    }
+    private void inOrder(Node node){
+        if (node == null)
+            return;
+        inOrder(node.left);
+        if (pre == null){
+            head = node;
+        }else {
+            pre.right = node;
+        }
+        node.left = pre;
+        pre = node;
+        inOrder(node.right);
+    }
+
+
+
     Node pre = null, head = null;
     public Node treeToDoublyList(Node root) {
         if (root == null)

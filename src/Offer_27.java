@@ -1,7 +1,6 @@
-import java.util.ArrayList;
+import javax.swing.tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 /**
  * 请完成一个函数，输入一个二叉树，该函数输出它的镜像。
@@ -10,6 +9,17 @@ public class Offer_27 {
 }
 
 class Solution {
+
+    public TreeNode mirrorTree(TreeNode node) {
+        if (node == null)
+            return null;
+
+        TreeNode tmp = mirrorTree(node.left);
+        node.left = mirrorTree(node.right);
+        node.right = tmp;
+        return node;
+    }
+
     public TreeNode mirrorTree(TreeNode root) {
         if (root == null)
             return null;

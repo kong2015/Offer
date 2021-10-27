@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Offer_6 {
 }
@@ -13,21 +12,40 @@ public class Offer_6 {
  * }
  */
 class Solution {
-    int[] res;
-    int i = 0;//记录总共有多少个节点，用于开辟内存
-    int j = 0;//记录当前节点索引，倒序
+    int size = 0;
+    int[] nums;
+    int index = 0;
     public int[] reversePrint(ListNode head) {
-        reverseNode(head);
-        return res;
+        recur(head);
+        return nums;
     }
-    private void reverseNode(ListNode node){
-        if (node == null){//基本问题和下面的更小的问题。
-            res = new int[i];
+    public void recur(ListNode head){
+        if (head == null){
+            nums = new int[size];
             return;
         }
-        i++;
-        reverseNode(node.next);//宏观语义：节点数加一，遍历下一个节点，将下一个节点的val放在res[j]中，然后j++。
-        res[j] = node.val;
-        j++;
+        size++;
+        recur(head.next);
+        nums[index] = head.val;
+        index++;
     }
+
+
+//    int[] res;
+//    int i = 0;//记录总共有多少个节点，用于开辟内存
+//    int j = 0;//记录当前节点索引，倒序
+//    public int[] reversePrint(ListNode head) {
+//        reverseNode(head);
+//        return res;
+//    }
+//    private void reverseNode(ListNode node){
+//        if (node == null){//基本问题和下面的更小的问题。
+//            res = new int[i];
+//            return;
+//        }
+//        i++;
+//        reverseNode(node.next);//宏观语义：节点数加一，遍历下一个节点，将下一个节点的val放在res[j]中，然后j++。
+//        res[j] = node.val;
+//        j++;
+//    }
 }

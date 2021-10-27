@@ -1,3 +1,6 @@
+import javax.swing.tree.TreeNode;
+import java.security.PrivateKey;
+
 /**
  * 输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)
  *
@@ -15,6 +18,24 @@ public class Offer_26 {
  * }
  */
 class Solution {
+    public boolean isSubStructure(TreeNode A, TreeNode B) {
+        if (A == null || B == null)
+            return false;
+        return recur(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B);
+    }
+    private boolean recur(TreeNode A, TreeNode B){
+        if (B == null)//这里需要优先判断是否为true。（当A和B都是null）
+            return true;
+        if (A == null) {
+            return false;
+        }
+        if (A.val != B.val)
+            return false;
+        return recur(A.left, B.left) && recur(A.right, B.right);
+    }
+
+
+
     public boolean isSubStructure(TreeNode A, TreeNode B) {
         if (A == null || B == null)
             return false;

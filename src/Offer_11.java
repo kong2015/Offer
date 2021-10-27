@@ -6,20 +6,39 @@
 public class Offer_11 {
 }
 
+
 class Solution {
     public int minArray(int[] numbers) {
-        return binarySearch(numbers, 0, numbers.length - 1);
+        return binarySearch(numbers, 0, numbers.length -1);
     }
-    private int binarySearch(int[] nums, int l, int r){
-        if (l > r)
-            return nums[l];
-        int mid = l + (r - l) / 2;
-        if (nums[mid] > nums[r]){
-            return binarySearch(nums, mid + 1, r);
-        }else if (nums[mid] < nums[r]){
-            return binarySearch(nums, l, mid);
+    private int binarySearch(int[] nums, int left, int right){
+        if (right < left){
+            return nums[left];
+        }
+        int mid = left + (right - left) / 2;
+        if (nums[mid] > nums[right]){
+            return binarySearch(nums, mid + 1, right);
+        }else if (nums[mid] < nums[right]){
+            return binarySearch(nums, left, mid);
         }else {
-            return binarySearch(nums, l, --r);
+            return binarySearch(nums, left, --right);
         }
     }
+
+
+//    public int minArray(int[] numbers) {
+//        return binarySearch(numbers, 0, numbers.length - 1);
+//    }
+//    private int binarySearch(int[] nums, int l, int r){
+//        if (l > r)
+//            return nums[l];
+//        int mid = l + (r - l) / 2;
+//        if (nums[mid] > nums[r]){
+//            return binarySearch(nums, mid + 1, r);
+//        }else if (nums[mid] < nums[r]){
+//            return binarySearch(nums, l, mid);
+//        }else {
+//            return binarySearch(nums, l, --r);
+//        }
+//    }
 }

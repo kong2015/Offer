@@ -1,4 +1,4 @@
-import javax.swing.*;
+import javax.swing.tree.TreeNode;
 import java.util.LinkedList;
 import java.util.List;
 /**
@@ -25,24 +25,46 @@ public class Offer_34 {
  */
 
 class Solution {
-    LinkedList<Integer> list = new LinkedList<>();
-    List<List<Integer>> res = new LinkedList<>();
     int sum = 0;
+    List<List<Integer>> res = new LinkedList<>();
+    LinkedList<Integer> list = new LinkedList<>();
     public List<List<Integer>> pathSum(TreeNode root, int target) {
-        dfs(root, target);
+        dfs1(root, target);
         return res;
     }
-    private void dfs(TreeNode node, int target){
-        if (node == null)
+    private void dfs1(TreeNode node, int target){
+        if (node == null){
             return;
-        sum += node.val;
-        list.offer(node.val);
-        if (sum == target && node.left == null && node.right == null){
-            res.add(new LinkedList<>(list));//必须新建一个对象，不然list的值一直会变
         }
-        dfs(node.left, target);
-        dfs(node.right, target);
+        sum += node.val;
+        list.add(node.val);
+        if (node.left == null && node.right == null && sum == target){
+            res.add(new LinkedList<>(list));
+        }
+        dfs1(node.left, target);
+        dfs1(node.right, target);
         sum -= node.val;
-        list.pollLast();
+        list.pollLast();//poll 是错误的，这个删除的是头部的元素.
     }
+
+//    LinkedList<Integer> list = new LinkedList<>();
+//    List<List<Integer>> res = new LinkedList<>();
+//    int sum = 0;
+//    public List<List<Integer>> pathSum(TreeNode root, int target) {
+//        dfs(root, target);
+//        return res;
+//    }
+//    private void dfs(TreeNode node, int target){
+//        if (node == null)
+//            return;
+//        sum += node.val;
+//        list.offer(node.val);
+//        if (sum == target && node.left == null && node.right == null){
+//            res.add(new LinkedList<>(list));//必须新建一个对象，不然list的值一直会变
+//        }
+//        dfs(node.left, target);
+//        dfs(node.right, target);
+//        sum -= node.val;
+//        list.pollLast();
+//    }
 }

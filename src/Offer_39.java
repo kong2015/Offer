@@ -3,13 +3,40 @@
  */
 public class Offer_39 {
     public int majorityElement(int[] nums) {
-        int votes = 0;
-        int res = 0;
+        int res = nums[0];
+        int count = 0;
         for (int num : nums) {
-            if (votes == 0) {
+            if (count == 0){
                 res = num;
             }
-            votes += res == num ? 1 : -1;
+            if (num == res){
+                count++;
+            }else {
+                count--;
+            }
+        }
+        return res;
+    }
+
+
+
+
+
+
+
+
+    public int majorityElement(int[] nums) {
+        int res = nums[0];
+        int count = 0;
+        for (int num : nums) {
+            if (count == 0){
+                res = num;
+            }
+            if (res == num){
+                count++;
+            }else {
+                count--;
+            }
         }
         return res;
     }

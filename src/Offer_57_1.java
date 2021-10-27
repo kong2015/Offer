@@ -3,15 +3,29 @@
  */
 public class Offer_57_1 {
     public int[] twoSum(int[] nums, int target) {
-        int i = 0, j = nums.length - 1;
-        while (i <= j){
-            int num = nums[i] + nums[j];
-            if (num == target){
-                return new int[] {nums[i], nums[j]};//注意这种赋值方法
-            }else if (num > target){
-                j--;
+        int l = 0;
+        int r = nums.length - 1;
+        while (l <= r){
+            if (nums[l] + nums[r] == target)
+                return new int[]{nums[l], nums[r]};
+            else if (nums[l] + nums[r] > target)
+                --r;
+            else ++l;
+        }
+        return new int[0];
+    }
+
+
+    public int[] twoSum(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right){
+            if (nums[left] + nums[right] == target){
+                return new int[]{nums[left], nums[right]};
+            }else if (nums[left] + nums[right] > target){
+                right--;
             }else {
-                i++;
+                left++;
             }
         }
         return new int[0];

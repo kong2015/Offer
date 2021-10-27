@@ -16,6 +16,33 @@
  */
 public class Offer_67 {
     public int strToInt(String str) {
+        int i = 0;
+        while (i < str.length() && str.charAt(i) == ' '){
+            i++;
+        }
+        int flag = 1;
+        int res = 0;
+        int bound = Integer.MAX_VALUE / 10;
+        if (i < str.length()){
+            if (str.charAt(i) == '-'){
+                flag = -1;
+                i++;
+            }else if (str.charAt(i) == '+'){
+                i++;
+            }
+        }
+        while (i < str.length() && str.charAt(i) <= '9' && str.charAt(i) >= '0'){
+            if (res > bound || (res == bound && str.charAt(i) > '7')){
+                return flag == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            res = 10 * res + str.charAt(i) - '0';
+            i++;
+        }
+        return flag * res;
+    }
+
+
+    public int strToInt(String str) {
         if (str.length() == 0)
             return 0;
         int i = 0;

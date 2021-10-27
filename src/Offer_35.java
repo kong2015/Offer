@@ -1,4 +1,7 @@
+import org.w3c.dom.Node;
+
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 请实现 copyRandomList 函数，复制一个复杂链表。
@@ -22,6 +25,23 @@ class Node {
 }
 */
 class Solution {
+    public Node copyRandomList(Node head) {
+        Map<Node, Node> map = new HashMap<>();
+        Node cur = head;
+        while (cur != null){
+            map.put(cur, new Node(cur.val));//new Node(cur.val)
+            cur = cur.next;
+        }
+        cur = head;
+        while (cur != null){
+            map.get(cur).next = map.get(cur.next);
+            map.get(cur).random = map.get(cur.random);
+            cur = cur.next;
+        }
+        return map.get(head);//注意这里 return head错误
+    }
+
+
     public Node copyRandomList(Node head) {
         HashMap<Node, Node>map = new HashMap<>();
         Node cur = head;

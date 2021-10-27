@@ -5,22 +5,50 @@ public class Offer_21 {
 }
 class Solution {
     public int[] exchange(int[] nums) {
-        if (nums == null ||nums.length == 0)
+        if (nums == null || nums.length == 0)
             return new int[0];
-        int i = 0, j = nums.length - 1;
-        while (i < j){
-            while (i < j && nums[i] % 2 == 1){
-                i++;
+        int left = 0;
+        int right = nums.length - 1;
+        int temp;
+        while (left < right){
+            while (left <= right && nums[left] % 2 == 1){
+                left++;
             }
-            while (i < j && nums[j] % 2 == 0){
-                j--;
+            while (left <= right && nums[right] % 2 == 0){
+                right--;
             }
-            int temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
-            i++;
-            j--;
+            if (left > right)
+                break;
+            temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
         }
         return nums;
     }
+
+
+
+
+
+//    public int[] exchange(int[] nums) {
+//        if (nums == null ||nums.length == 0)
+//            return new int[0];
+//        int i = 0, j = nums.length - 1;
+//        while (i < j){
+//            while (i < j && nums[i] % 2 == 1){
+//                i++;
+//            }
+//            while (i < j && nums[j] % 2 == 0){
+//                j--;
+//            }
+//            int temp = nums[i];
+//            nums[i] = nums[j];
+//            nums[j] = temp;
+//            i++;
+//            j--;
+//        }
+//        return nums;
+//    }
 }

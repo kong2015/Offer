@@ -1,4 +1,8 @@
+import com.sun.source.tree.WhileLoopTree;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。
@@ -6,25 +10,53 @@ import java.util.ArrayList;
  */
 public class Offer_57_2 {
     public int[][] findContinuousSequence(int target) {
-        int i = 1, j = 2;
+        int l = 1;
+        int r = 2;
         int sum = 3;
-        ArrayList<int[]> list = new ArrayList<>();
-        while (i < j){
+        List<int[]>res = new LinkedList<>();
+        while (l < r){// l = r是不可以的，因为这个时候不应该执行程序，比如2、3、4 || 4、5（但是单独一个9不可以）
             if (sum == target){
-                int[] element = new int[j - i +1];
-                for (int k = i; k <= j; k++){
-                    element[k - i] = k;
+                int[] data = new int[r - l + 1];
+                for (int i = l; i <= r; i++){
+                    data[i - l] = i;
                 }
-                list.add(element);
-            }
-            if (sum >= target){//假设执行完上面的等号代码块，仍需寻找下一组满足条件的序列，此时应该让左边界加一。所以这个if和上面的if并不是互斥。
-                sum -= i;
-                i++;
+                res.add(data);
+                sum -= l;
+                l++;
+            }else if (sum > target){
+                sum -= l;
+                l++;
             }else {
-                j++;
-                sum +=j;
+                r++;
+                sum += r;
             }
         }
-        return list.toArray(new int[0][]);
+        return res.toArray(new int[0][]);
+    }
+
+    public int[][] findContinuousSequence(int target) {
+        List<int[]> res = new ArrayList<>();
+        int sum = 3;
+        int left = 1, right = 2;
+        while (left < right){
+            if (sum == target){
+                int[] nums = new int[right - left + 1];
+                for (int i = left, j = 0; i <= right; i++,j++){
+                    nums[j] = i;
+                }
+                res.add(nums);
+                right++;
+                sum+=right;
+            }
+            if (sum < target){
+                right++;
+                sum += right;
+            }
+            if (sum > target){
+                sum-=left;
+                left++;
+            }
+        }
+        return res.toArray(new int[0][]);
     }
 }

@@ -6,6 +6,24 @@ import java.util.HashSet;
  */
 public class Offer_61 {
     public boolean isStraight(int[] nums) {
+        int max = 0;
+        int min = 14;
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (num == 0)
+                continue;
+            if (set.contains(num)){
+                return false;
+            }else {
+                set.add(num);
+            }
+            max = Math.max(max, num);
+            min = Math.min(min, num);
+        }
+        return max - min < 5;
+    }
+
+    public boolean isStraight(int[] nums) {
         HashSet<Integer> set = new HashSet<>();
         int min = 14, max = 0;
         for (int num : nums){

@@ -3,25 +3,40 @@
  */
 public class Offer_5 {
     public String replaceSpace(String s) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(s);
-        for (int i = 0; i < s.length(); i++){
-            if (s.charAt(i) == ' ')
-                sb.append("12");
+        if (s == null || s.length() == 0){
+            return "";
         }
-        int p1 = s.length() - 1, p2 = sb.length() - 1;
-        while (p1 < p2 && p1 >= 0){
-            Character c = sb.charAt(p1--);
+        StringBuffer stringBuffer = new StringBuffer();
+        for (Character c : s.toCharArray()){
             if (c == ' '){
-                sb.setCharAt(p2--, '0');
-                sb.setCharAt(p2--, '2');
-                sb.setCharAt(p2--, '%');
+                stringBuffer.append("%20");
             }else {
-                sb.setCharAt(p2--, c);
+                stringBuffer.append(c);
             }
         }
-        return sb.toString();
+        return stringBuffer.toString();
     }
+
+//    public String replaceSpace(String s) {
+//        StringBuffer sb = new StringBuffer();
+//        sb.append(s);
+//        for (int i = 0; i < s.length(); i++){
+//            if (s.charAt(i) == ' ')
+//                sb.append("12");
+//        }
+//        int p1 = s.length() - 1, p2 = sb.length() - 1;
+//        while (p1 < p2 && p1 >= 0){
+//            Character c = sb.charAt(p1--);
+//            if (c == ' '){
+//                sb.setCharAt(p2--, '0');
+//                sb.setCharAt(p2--, '2');
+//                sb.setCharAt(p2--, '%');
+//            }else {
+//                sb.setCharAt(p2--, c);
+//            }
+//        }
+//        return sb.toString();
+//    }
 }
 //class Solution {
 //    public String replaceSpace(String s) {
