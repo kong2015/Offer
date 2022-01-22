@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -9,7 +8,7 @@ import java.util.List;
  * 输入：s = "abc"
  * 输出：["abc","acb","bac","bca","cab","cba"]
  */
-class Solution {
+class Offer_38 {
     //为了让递归函数添加结果方便，定义到函数之外，这样无需带到递归函数的参数列表中
     List<String> list = new ArrayList<>();
     //同；但是其赋值依赖c，定义声明分开

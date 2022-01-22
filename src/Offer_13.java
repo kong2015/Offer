@@ -28,17 +28,17 @@ public class Offer_13 {
     }
 
 
-    private boolean[][] visited;
-    public int movingCount(int m, int n, int k) {
-        visited = new boolean[m][n];
-        return dfs(0,0, 0, 0, m,n,k);
-    }
-    private int dfs(int i, int j, int iSum, int jSum, int m, int n, int k){
-        if (iSum + jSum > k || i >= m || j >= n || visited[i][j])
-            return 0;
-        visited[i][j] = true;//同样
-        return 1+ dfs(i+1,j,(i+1) % 10 == 0 ? iSum-8:iSum+1,jSum,m,n,k) + dfs(i,j+1,iSum,(j+1) % 10 == 0 ? jSum-8:jSum+1,m,n,k) ;
-    }
+//    private boolean[][] visited;
+//    public int movingCount(int m, int n, int k) {
+//        visited = new boolean[m][n];
+//        return dfs(0,0, 0, 0, m,n,k);
+//    }
+//    private int dfs(int i, int j, int iSum, int jSum, int m, int n, int k){
+//        if (iSum + jSum > k || i >= m || j >= n || visited[i][j])
+//            return 0;
+//        visited[i][j] = true;//同样
+//        return 1+ dfs(i+1,j,(i+1) % 10 == 0 ? iSum-8:iSum+1,jSum,m,n,k) + dfs(i,j+1,iSum,(j+1) % 10 == 0 ? jSum-8:jSum+1,m,n,k) ;
+//    }
 
 }
 

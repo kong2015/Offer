@@ -3,29 +3,6 @@
  * 请写程序找出这两个只出现一次的数字。要求时间复杂度是O(n)，空间复杂度是O(1)。
  */
 public class Offer_56_1 {
-}
-class Solution {
-    public int[] singleNumbers(int[] nums) {
-        int res = 0;
-        for (int num : nums) {
-            res ^= num;
-        }
-        int a = 1;
-        while ((a & res) == 0){
-            a <<= 1;
-        }
-        int x = 0;
-        int y = 0;
-        for (int num : nums) {
-            if ((num & a) == 0){
-                x ^= num;
-            }else {
-                y ^= num;
-            }
-        }
-        return new int[]{x, y};
-    }
-
     public int[] singleNumbers(int[] nums) {
         int n = 0;
         for (int num : nums){
@@ -47,4 +24,26 @@ class Solution {
         }
         return new int[] {x,y};
     }
+
+    //    public int[] singleNumbers(int[] nums) {
+//        int res = 0;
+//        for (int num : nums) {
+//            res ^= num;
+//        }
+//        int a = 1;
+//        while ((a & res) == 0){
+//            a <<= 1;
+//        }
+//        int x = 0;
+//        int y = 0;
+//        for (int num : nums) {
+//            if ((num & a) == 0){
+//                x ^= num;
+//            }else {
+//                y ^= num;
+//            }
+//        }
+//        return new int[]{x, y};
+//    }
 }
+

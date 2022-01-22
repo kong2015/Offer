@@ -5,8 +5,6 @@
  */
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,26 +20,26 @@ public class Offer_38_1 {
      */
     HashSet<String>set = new HashSet<>();
     StringBuffer sb = new StringBuffer();
-    public String[] permutation(String s) {
-        boolean[] visited = new boolean[s.length()];
-        dfs(s,visited);
-        return set.toArray(new String[0]);
-    }
-    private void dfs(String s, boolean[] visited){
-        if (s.length() == sb.length()){
-            set.add(sb.toString());
-            return;
-        }
-        for (int i = 0; i < s.length(); i++){
-            if (visited[i])
-                continue;
-            visited[i] = true;
-            sb.append(s.charAt(i));
-            dfs(s, visited);
-            sb.deleteCharAt(sb.length() - 1);
-            visited[i] = false;
-        }
-    }
+//    public String[] permutation(String s) {
+//        boolean[] visited = new boolean[s.length()];
+//        dfs(s,visited);
+//        return set.toArray(new String[0]);
+//    }
+//    private void dfs(String s, boolean[] visited){
+//        if (s.length() == sb.length()){
+//            set.add(sb.toString());
+//            return;
+//        }
+//        for (int i = 0; i < s.length(); i++){
+//            if (visited[i])
+//                continue;
+//            visited[i] = true;
+//            sb.append(s.charAt(i));
+//            dfs(s, visited);
+//            sb.deleteCharAt(sb.length() - 1);
+//            visited[i] = false;
+//        }
+//    }
 
 
     Set<String> res = new HashSet();

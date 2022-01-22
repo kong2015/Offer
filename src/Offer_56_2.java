@@ -9,8 +9,6 @@ import java.util.Map;
  * 解法3： 排序法：取前后均不相同的一个索引对应的数值
  */
 public class Offer_56_2 {
-}
-class Solution {
     public int singleNumber(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int num : nums){
@@ -41,20 +39,20 @@ class Solution {
 //    }
 
 
-    public int singleNumber(int[] nums) {
-        int[] count = new int[32];
-        for (int i = 0; i < nums.length; i++){
-            for (int j = 0; j < 32; j++){
-                count[j] += (nums[i] & 1);
-                nums[i] >>= 1;
-            }
-        }
-        int res = 0;
-        for (int i = 0; i < 32; i++){
-            res <<= 1;
-            res |= count[31 - i] % 3;//这里res = count[31 - i];是错误的，不能赋值，只能使用位操作（向左移）。
-        }
-        return res;
-    }
+//    public int singleNumber(int[] nums) {
+//        int[] count = new int[32];
+//        for (int i = 0; i < nums.length; i++){
+//            for (int j = 0; j < 32; j++){
+//                count[j] += (nums[i] & 1);
+//                nums[i] >>= 1;
+//            }
+//        }
+//        int res = 0;
+//        for (int i = 0; i < 32; i++){
+//            res <<= 1;
+//            res |= count[31 - i] % 3;//这里res = count[31 - i];是错误的，不能赋值，只能使用位操作（向左移）。
+//        }
+//        return res;
+//    }
 }
 

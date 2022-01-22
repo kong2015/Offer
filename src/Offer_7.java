@@ -1,4 +1,3 @@
-import javax.swing.tree.TreeNode;
 import java.util.HashMap;
 
 /**
@@ -8,17 +7,6 @@ import java.util.HashMap;
  * 中序遍历 inorder = [9,1,3,15,20,7]
  */
 public class Offer_7 {
-}
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-class Solution {
     HashMap<Integer, Integer> map = new HashMap<>();
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         for (int i = 0; i < inorder.length; i++) {
@@ -55,3 +43,12 @@ class Solution {
 //        return node;
 //    }
 }
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */

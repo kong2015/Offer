@@ -1,6 +1,4 @@
 
-public class Offer_6 {
-}
 /**
  * 输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。
  *
@@ -11,7 +9,8 @@ public class Offer_6 {
  *     ListNode(int x) { val = x; }
  * }
  */
-class Solution {
+
+public class Offer_6 {
     int size = 0;
     int[] nums;
     int index = 0;
@@ -49,3 +48,4 @@ class Solution {
 //        j++;
 //    }
 }
+
